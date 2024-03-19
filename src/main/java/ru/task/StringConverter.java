@@ -23,10 +23,10 @@ public class StringConverter {
     }
 
     private <T> void objectsChecks(T... objects) {
-        Class<?> objectClass = null;
         if (objects.length == 0) {
             throw new EmptyStackException();
         }
+        Class<?> objectClass = null;
         for (int i = 0; i < objects.length - 1; i++) {
             //if (Objects.isNull(objects[i])) { java 1.8
             if (objects[i] == null) {
@@ -39,7 +39,7 @@ public class StringConverter {
                 throw new IllegalArgumentException("Объекты имеют разные типы!");
             }
             // надо ли
-            if (objects[i] instanceof String && (((String) objects[i]).isEmpty() || ((String) objects[i]).contains(" "))) {
+            if (objects[i] instanceof String && (((String) objects[i]).isEmpty() || ((String) objects[i]).contains(" "))) { // ((String) objects[i]).isBlank() с 11 версии
                 throw new IllegalArgumentException("Один из параметров является пустой строкой или символом пробела!");
             }
         }
