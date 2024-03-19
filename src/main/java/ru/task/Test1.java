@@ -6,6 +6,7 @@ package ru.task;
  */
 public class Test1 {
     public static void main(String[] args) {
+        System.out.println(new StringConverter().convertObjects("."));
         System.out.println(new StringConverter().convertObjects("-",0, 1));
         System.out.println(new StringConverter().convertObjects("-",7L));
         System.out.println(new StringConverter().convertObjects("/",false, true));
