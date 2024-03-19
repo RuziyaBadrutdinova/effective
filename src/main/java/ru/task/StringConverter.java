@@ -24,6 +24,9 @@ public class StringConverter {
 
     private <T> void objectsChecks(T... objects) {
         Class<?> objectClass = null;
+        if (objects.length == 0) {
+            throw new EmptyStackException();
+        }
         for (int i = 0; i < objects.length - 1; i++) {
             //if (Objects.isNull(objects[i])) { java 1.8
             if (objects[i] == null) {
