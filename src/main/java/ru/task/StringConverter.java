@@ -38,7 +38,6 @@ public class StringConverter {
             if (!objectClass.equals(objects[i].getClass())) {
                 throw new IllegalArgumentException("Объекты имеют разные типы!");
             }
-            // надо ли
             if (objects[i] instanceof String && (((String) objects[i]).isEmpty() || ((String) objects[i]).contains(" "))) { // ((String) objects[i]).isBlank() с 11 версии
                 throw new IllegalArgumentException("Один из параметров является пустой строкой или символом пробела!");
             }
