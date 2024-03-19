@@ -1,5 +1,8 @@
 package ru.task;
 
+import java.util.EmptyStackException;
+import java.util.Objects;
+
 /**
  * @author RuziyaBadrutdinova
  * @since 17.03.2024
@@ -16,7 +19,7 @@ public class StringConverter {
         if (size == 2) {
             return returnString.append(objects[0]).append(delimiter).append(objects[1]).toString();
         }
-        for (int i = 0; i < size - 2; i++) {
+        for (int i = 0; i < size - 1; i++) {
             returnString.append(objects[i]).append(delimiter);
         }
         return returnString.append(objects[size-1]).toString();
@@ -27,7 +30,7 @@ public class StringConverter {
             throw new EmptyStackException();
         }
         Class<?> objectClass = null;
-        for (int i = 0; i < objects.length - 1; i++) {
+        for (int i = 0; i < objects.length; i++) {
             //if (Objects.isNull(objects[i])) { java 1.8
             if (objects[i] == null) {
                 throw new NullPointerException("Параметр под индексом " + i + " равен null!");
@@ -38,7 +41,7 @@ public class StringConverter {
             if (!objectClass.equals(objects[i].getClass())) {
                 throw new IllegalArgumentException("Объекты имеют разные типы!");
             }
-            if (objects[i] instanceof String && (((String) objects[i]).isEmpty() || ((String) objects[i]).contains(" "))) { // ((String) objects[i]).isBlank() с 11 версии
+            if (objects[i] instanceof String && (((String) objects[i]).isEmpty() || objects[i].equals(" "))) { // ((String) objects[i]).isBlank() с 11 версии
                 throw new IllegalArgumentException("Один из параметров является пустой строкой или символом пробела!");
             }
         }
